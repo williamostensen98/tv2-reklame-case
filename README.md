@@ -25,8 +25,8 @@ project/
 ### 1. Clone the repository
 
 ```bash
-git clone <your-repo-url>
-cd <your-repo>
+git clone git@github.com:williamostensen98/tv2-reklame-case.git
+cd tv2-reklame-case
 ```
 
 ### 2. Create a virtual environment
