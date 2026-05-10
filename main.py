@@ -8,17 +8,12 @@ from confluent_kafka import Producer
 
 producer_config = {'bootstrap.servers': 'localhost:9094'}
 
-producer = None
-
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    global producer
-    producer = Producer(producer_config)
+    app.state.producer = Producer(producer_config)
     yield
-    producer.flush() # Ensure all messages are sent before shutdown
-
+    app.state.producer.flush() # Ensure all messages are sent before shutdown
 app = FastAPI(lifespan=lifespan)
-
 
 def delivery_report(err, msg):
     if err is not None:
@@ -28,7 +23,7 @@ def delivery_report(err, msg):
 
 @app.post("/userdata")
 async def process_data_to_kafka(request: Request):
-
+    producer = request.app.state.producer
     try:
         data = await request.json()
 
