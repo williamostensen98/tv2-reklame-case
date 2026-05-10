@@ -1,12 +1,24 @@
 import json
+from contextlib import asynccontextmanager
+
 from fastapi import FastAPI, Request, Response, HTTPException
 from fastapi.responses import JSONResponse
 from confluent_kafka import Producer
 
 
 producer_config = {'bootstrap.servers': 'localhost:9094'}
-app = FastAPI()
-producer = Producer(producer_config)
+
+producer = None
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    global producer
+    producer = Producer(producer_config)
+    yield
+    producer.flush() # Ensure all messages are sent before shutdown
+
+app = FastAPI(lifespan=lifespan)
+
 
 def delivery_report(err, msg):
     if err is not None:
