@@ -119,6 +119,12 @@ curl -X POST http://localhost:8000/userdata \
   -H "Content-Type: application/json" \
   -d 'not valid json' 
 ```
+Expected response:
+
+```json
+"Status 400 - Invalid JSON"
+```
+
 
 ### Verify the message reached Kafka
 
