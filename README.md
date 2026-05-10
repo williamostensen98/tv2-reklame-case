@@ -1,4 +1,4 @@
-# FastAPI Kafka Ingest Service
+# FastAPI Kafka TV2 Caseoppgave
 
 A lightweight HTTP service that receives arbitrary JSON data and forwards it persistently to a Kafka topic.
 
