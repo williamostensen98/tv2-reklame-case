@@ -16,3 +16,4 @@ Andre ting som burde legges til dersom det skulle bli tatt videre til produksjon
 * Andre api-relaterte ting som må være med: rate limiting, encryption av data, sanitering(unngå angrep), caching og load balancing.
 * Logging av events og feil fra både api og kafka gjennom en logger og  bare med ikke print meldinger :). 
 * Sette opp mer detaljert config for kafka features som trengs. For eks. retries, idempotency(håndtering av duplikater) og ev. backups av data ved flere brokere, partisjoner osv(replication). 
+* Dokumentasjon (Swagger)

@@ -33,7 +33,7 @@ async def process_data_to_kafka(request: Request):
         data = await request.json()
 
     except Exception:
-        raise HTTPException(status_code=400, detail=f"Invalid JSON")
+        raise HTTPException(status_code=400, detail=f"Status 400 - Invalid JSON")
 
     try:
         producer.produce(
