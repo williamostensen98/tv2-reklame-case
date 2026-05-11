@@ -89,3 +89,7 @@ sammen med Fast API da førstnevnte er synkront og sistnevnte asynkront. Det kan
 har lest vil kreve at man kjører consumer og fast api på ulike tråder. (?). Dette ville vært noe å sjekke opp i dersom man skulle 
 ha tjenesten ut i produksjon. På grunn av dette så virker det som det er bedre å konfigurere produceren inne i fastapi sin
 lifespan funksjon istedenfor utenfor slik jeg originalt hadde det. 
+
+### 010
+Det var noen problemer med hvordan jeg først hadde gjort det med å ha en global variabel for produceren,
+så jeg endret til å bruke app state i stedenfor, slik at appen bare henter ut prouceren fra denne staten når den brukes.
